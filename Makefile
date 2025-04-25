@@ -14,3 +14,4 @@ all:
 	swig -c++ -python $(INCS) -o recombiner_wrap.cxx recombiner.i
 	g++ $(FLAGS) $(PYTHONI) $(INCS) -c recombiner_wrap.cxx -o recombiner_wrap.o
 	g++ $(PYTHONL) $(LIBFLAGS) $(INCS) -shared MyRecombiner.o recombiner_wrap.o $(LIBS) -o _recombiner.so
+	echo "Add `python -c "import fastjet; print (fastjet.__path__[0])"`/_fastjet_core/lib to your LD_LIBRARY_PATH"
