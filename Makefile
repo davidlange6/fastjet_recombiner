@@ -1,9 +1,11 @@
 # standard compile options for the c++ executable
 FLAGS = -fPIC
-INCS = -I/dlange/240422/mc/lib/python3.12/site-packages/fastjet/_fastjet_core/include/
-LIBS = /dlange/240422/mc/lib/python3.12/site-packages/fastjet/_fastjet_core/lib/libfastjet.so
+FASTJET_LOC=`python -c "import fastjet; print (fastjet.__path__[0])"`
+
+INCS = -I$(FASTJET_LOC)/_fastjet_core/include/
+LIBS = $(FASTJET_LOC)/_fastjet_core/lib/libfastjet.so
 # the python interface through swig
-PYTHONI = -I/dlange/240422/mc/include/python3.12/
+PYTHONI = `python3-config --includes`
 PYTHONL = -Xlinker -export-dynamic
 
 # default super-target
